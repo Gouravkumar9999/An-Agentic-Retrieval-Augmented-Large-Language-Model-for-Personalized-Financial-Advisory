@@ -1,7 +1,11 @@
-Risk assessment depends on income stability, savings, and market conditions.
+If savings < 3 months of expenses → HIGH financial risk.
 
-High inflation reduces purchasing power and increases financial uncertainty.
-Rising interest rates affect borrowing costs and investment returns.
+If expenses > 70% of income → HIGH financial instability risk.
 
-Individuals with low savings should avoid high-risk investments.
-Diversification is a key strategy to manage financial risk.
+If user has high discretionary spending → risk of poor financial discipline.
+
+High inflation → reduces purchasing power → increases financial risk.
+
+High interest rates → increase loan burden.
+
+Low savings + high expenses → critical financial condition.

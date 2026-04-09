@@ -1,7 +1,9 @@
-Debt management is crucial for financial stability.
+If credit card debt exists → prioritize repayment immediately.
 
-High-interest debt such as credit card balances should be repaid quickly.
-Low-interest debt can be managed over time.
+If debt-to-income ratio > 40% → risky financial condition.
 
-Maintaining a low debt-to-income ratio improves financial health.
-Avoid taking on new debt if income is unstable.
+Avoid new loans if savings < 3 months of expenses.
+
+Low-interest loans can be managed gradually.
+
+High-interest loans must be cleared aggressively.

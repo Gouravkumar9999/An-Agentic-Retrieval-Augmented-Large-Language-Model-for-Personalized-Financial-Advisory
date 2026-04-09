@@ -1,0 +1,7 @@
+Expense analysis helps identify overspending patterns.
+
+Spending above 30% in discretionary categories (restaurants, shopping, entertainment) is considered high.
+
+High-frequency small expenses (like coffee) often accumulate significantly over time.
+
+Reducing top 2 expense categories can significantly improve savings.

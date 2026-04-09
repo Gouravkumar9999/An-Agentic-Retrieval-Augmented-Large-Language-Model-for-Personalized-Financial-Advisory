@@ -1,0 +1,10 @@
+Key financial ratios:
+
+1. Savings Ratio = Savings / Income
+2. Expense Ratio = Expenses / Income
+
+Healthy benchmarks:
+- Expense ratio < 50% → Good
+- Savings ratio > 20% → Strong
+
+Ratios help evaluate financial health objectively.

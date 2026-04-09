@@ -1,18 +1,18 @@
 def analyze_transactions(df):
-    
-    # rename type → category
     df = df.copy()
+
     df["category"] = df["transaction_type"]
 
-    # monthly spending (assuming step ~ time)
-    monthly_spend = df["amount"].sum() / 12
+    # Monthly spend (robust)
+    monthly_series = df.groupby(df["date"].dt.to_period("M"))["amount"].sum()
 
-    # spending per category
+    monthly_spend = monthly_series.mean() if len(monthly_series) > 0 else 0
+
     categories = df.groupby("category")["amount"].sum().to_dict()
 
     return {
-        "monthly_spending": monthly_spend,
-        "category_breakdown": categories
+        "monthly_spending": round(float(monthly_spend), 2),
+        "category_breakdown": {k: round(float(v), 2) for k, v in categories.items()}
     }
 def generate_market_summary(inflation_df, interest_df):
 

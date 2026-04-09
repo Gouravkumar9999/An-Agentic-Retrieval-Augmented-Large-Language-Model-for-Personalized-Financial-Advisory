@@ -1,7 +1,34 @@
-Investment risks include market risk, credit risk, and inflation risk.
+Financial risks affect investments and overall financial stability.
 
-Market risk refers to fluctuations in asset prices.
-Credit risk relates to the possibility of default.
-Inflation risk reduces purchasing power.
+Main types of risk:
 
-Understanding risks helps in making better investment decisions.
+1. Market Risk:
+- Prices of stocks and assets fluctuate
+- Caused by economic changes, demand, and global events
+
+2. Credit Risk:
+- Borrower may fail to repay loans or debt
+- Common in bonds and lending
+
+3. Inflation Risk:
+- Rising prices reduce purchasing power
+- Savings lose value over time
+
+4. Liquidity Risk:
+- Difficulty in converting assets to cash quickly
+
+5. Interest Rate Risk:
+- Changes in interest rates affect loans and investments
+
+Rules:
+- High return investments = High risk
+- Low savings + High risk investments = Dangerous
+- Diversification reduces overall risk
+
+If savings are low:
+→ Avoid high-risk investments
+
+Risk must match:
+- Income stability
+- Savings level
+- Risk preference (low / medium / high)

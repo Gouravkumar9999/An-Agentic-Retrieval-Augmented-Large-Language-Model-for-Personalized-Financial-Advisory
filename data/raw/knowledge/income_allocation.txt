@@ -1,0 +1,12 @@
+Income allocation is the process of dividing income into spending, saving, and investing.
+
+Savings can be estimated as:
+Savings = Income - Total Expenses
+
+If expenses are less than income, the remaining amount is considered savings.
+
+A healthy financial structure:
+- 20% or more savings = good
+- Less than 10% savings = risky
+
+If savings are not explicitly provided, they should be inferred from income and expenses.

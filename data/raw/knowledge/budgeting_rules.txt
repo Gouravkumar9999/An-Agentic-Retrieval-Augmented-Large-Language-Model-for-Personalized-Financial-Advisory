@@ -1,9 +1,16 @@
-The 50/30/20 budgeting rule is a widely used personal finance strategy.
+If monthly spending exceeds 50% of income, the user is overspending.
 
-50% of income should be allocated to needs such as rent, groceries, utilities, and essential expenses.
-30% of income can be spent on wants such as entertainment, dining out, and non-essential purchases.
-20% of income should be saved or invested for future goals.
+If spending on discretionary categories (restaurants, entertainment, shopping) exceeds 30% of income, it indicates poor financial discipline.
 
-A good budgeting strategy involves tracking expenses regularly, avoiding unnecessary debt, and maintaining an emergency fund covering at least 3 to 6 months of expenses.
+The 50/30/20 rule:
+- 50% needs
+- 30% wants
+- 20% savings
 
-Overspending on non-essential items can lead to financial instability. Individuals should aim to reduce discretionary expenses if savings fall below 20%.
+If savings are below 20% of income, the user should reduce discretionary spending.
+
+Restaurant spending above 20% of income is considered excessive.
+
+Coffee or small frequent expenses exceeding 5% of income indicate poor micro-spending control.
+
+Users should track expenses weekly and set category-wise limits.

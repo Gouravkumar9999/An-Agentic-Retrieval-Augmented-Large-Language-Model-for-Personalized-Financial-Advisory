@@ -1,6 +1,21 @@
-An emergency fund provides financial security during unexpected events.
+Emergency fund is essential for financial stability.
 
-It should cover at least 3 to 6 months of expenses.
-It helps avoid debt during financial crises.
+It should cover:
+- Minimum: 3 months of expenses
+- Ideal: 6 months of expenses
 
-Emergency funds should be easily accessible.
+Formula:
+Emergency Fund = Monthly Expenses × 3 to 6
+
+Rules:
+- Must be easily accessible (savings account / liquid fund)
+- Should NOT be invested in high-risk assets
+- Should be used only for emergencies (job loss, medical, crisis)
+
+If emergency fund = 0:
+→ Financial risk is HIGH
+
+If emergency fund < 3 months:
+→ Financial stability is WEAK
+
+Building emergency fund is the FIRST priority before investing.

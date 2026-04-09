@@ -1,19 +1,64 @@
 import pandas as pd
+import numpy as np
+
+ESSENTIAL = ["Health", "Transport", "Fuel", "Market"]
+DISCRETIONARY = ["Coffe", "Restuarant", "Travel", "Film/enjoyment", "Joy"]
 
 def preprocess_transactions(df):
     df = df.copy()
 
-    # Rename columns (PaySim specific)
-    df = df.rename(columns={
-        "type": "transaction_type",
-        "amount": "amount",
-        "oldbalanceOrg": "balance_before",
-        "newbalanceOrig": "balance_after"
-    })
+    # Rename
+    if "category" in df.columns:
+        df.rename(columns={"category": "transaction_type"}, inplace=True)
 
-    # Create simple features
-    df["spending"] = df["amount"]
-    df["is_expense"] = df["balance_after"]< df["balance_before"]
+    # Validate
+    required_cols = ["date", "transaction_type", "amount"]
+    for col in required_cols:
+        if col not in df.columns:
+            raise ValueError(f"{col} missing!")
+
+    # Convert
+    df["amount"] = df["amount"].astype(float)
+    df["date"] = pd.to_datetime(df["date"], errors="coerce")
+
+    # 🔥 REMOVE OUTLIERS
+    df = df[df["amount"] < df["amount"].quantile(0.99)]
+
+    # -----------------------------
+    # FEATURE ENGINEERING
+    # -----------------------------
+    df["month"] = df["date"].dt.to_period("M")
+
+    total_spend = df["amount"].sum()
+
+    # Category breakdown
+    category_spend = df.groupby("transaction_type")["amount"].sum()
+
+    # 🔥 TOP 3 concentration
+    top3_ratio = category_spend.sort_values(ascending=False).head(3).sum() / total_spend
+
+    # 🔥 ESSENTIAL / DISCRETIONARY
+    essential_spend = df[df["transaction_type"].isin(ESSENTIAL)]["amount"].sum()
+    discretionary_spend = df[df["transaction_type"].isin(DISCRETIONARY)]["amount"].sum()
+
+    essential_ratio = essential_spend / total_spend if total_spend else 0
+    discretionary_ratio = discretionary_spend / total_spend if total_spend else 0
+
+    # 🔥 VOLATILITY
+    monthly_spend = df.groupby("month")["amount"].sum()
+    volatility = monthly_spend.std()
+
+    # 🔥 TRANSACTION FREQUENCY
+    days = (df["date"].max() - df["date"].min()).days + 1
+    txn_frequency = len(df) / days if days else 0
+
+    df.attrs["features"] = {
+        "top3_ratio": round(top3_ratio, 3),
+        "essential_ratio": round(essential_ratio, 3),
+        "discretionary_ratio": round(discretionary_ratio, 3),
+        "volatility": round(volatility if not np.isnan(volatility) else 0, 3),
+        "txn_frequency": round(txn_frequency, 3)
+    }
 
     return df
 

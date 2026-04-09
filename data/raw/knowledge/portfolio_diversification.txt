@@ -1,6 +1,10 @@
 Diversification reduces financial risk.
 
-Investing across different asset classes minimizes exposure to any single investment.
-A balanced portfolio includes equities, bonds, and index funds.
+Portfolio should include:
+- equities
+- bonds
+- index funds
 
-Over-concentration increases vulnerability to losses.
+Over-concentration (>50% in one asset) increases risk.
+
+Balanced portfolios perform better during market volatility.

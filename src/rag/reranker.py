@@ -1,18 +1,25 @@
-from sentence_transformers import SentenceTransformer, util
+from sentence_transformers import CrossEncoder
 
-rerank_model = SentenceTransformer("all-MiniLM-L6-v2")
 
-def rerank(query, docs, top_k=5):
+class Reranker:
+    def __init__(self, docs):
+        self.docs = docs
 
-    query_emb = rerank_model.encode(query, convert_to_tensor=True)
-    doc_embs = rerank_model.encode(docs, convert_to_tensor=True)
+        # 🔥 Cross-encoder model (STRONG)
+        self.model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
 
-    scores = util.cos_sim(query_emb, doc_embs)[0]
+    def rerank(self, query, top_k=5):
+        # Create query-doc pairs
+        pairs = [(query, doc) for doc in self.docs]
 
-    ranked = sorted(
-        zip(docs, scores),
-        key=lambda x: x[1],
-        reverse=True
-    )
+        # Get relevance scores
+        scores = self.model.predict(pairs)
 
-    return [doc for doc, _ in ranked[:top_k]]
+        # Sort by score
+        ranked = sorted(
+            zip(self.docs, scores),
+            key=lambda x: x[1],
+            reverse=True
+        )
+
+        return [doc for doc, _ in ranked[:top_k]]
