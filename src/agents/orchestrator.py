@@ -3,11 +3,11 @@ from src.agents.investment_agent import investment_agent
 from src.agents.risk_agent import risk_agent
 from src.agents.compliance_agent import compliance_agent
 history = []
-def run_agents(user_data, market_data, context, metrics):
+def run_agents(user_data, market_data, context, metrics, computed_risks):
     global history
     budget = budget_agent(user_data, context, metrics)
     investment = investment_agent(user_data, market_data, context, metrics)
-    risk = risk_agent(user_data, context, metrics)
+    risk = risk_agent(user_data, context, metrics, computed_risks)
 
     final_output = f"""
     ===== PERSONAL FINANCE REPORT =====

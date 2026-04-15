@@ -5,7 +5,7 @@ class Reranker:
     def __init__(self, docs):
         self.docs = docs
 
-        # 🔥 Cross-encoder model (STRONG)
+        #  Cross-encoder model (STRONG)
         self.model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
 
     def rerank(self, query, top_k=5):

@@ -21,7 +21,7 @@ def preprocess_transactions(df):
     df["amount"] = df["amount"].astype(float)
     df["date"] = pd.to_datetime(df["date"], errors="coerce")
 
-    # 🔥 REMOVE OUTLIERS
+    #  REMOVE OUTLIERS
     df = df[df["amount"] < df["amount"].quantile(0.99)]
 
     # -----------------------------
@@ -34,21 +34,21 @@ def preprocess_transactions(df):
     # Category breakdown
     category_spend = df.groupby("transaction_type")["amount"].sum()
 
-    # 🔥 TOP 3 concentration
+    #  TOP 3 concentration
     top3_ratio = category_spend.sort_values(ascending=False).head(3).sum() / total_spend
 
-    # 🔥 ESSENTIAL / DISCRETIONARY
+    #  ESSENTIAL / DISCRETIONARY
     essential_spend = df[df["transaction_type"].isin(ESSENTIAL)]["amount"].sum()
     discretionary_spend = df[df["transaction_type"].isin(DISCRETIONARY)]["amount"].sum()
 
     essential_ratio = essential_spend / total_spend if total_spend else 0
     discretionary_ratio = discretionary_spend / total_spend if total_spend else 0
 
-    # 🔥 VOLATILITY
+    #  VOLATILITY
     monthly_spend = df.groupby("month")["amount"].sum()
     volatility = monthly_spend.std()
 
-    # 🔥 TRANSACTION FREQUENCY
+    # TRANSACTION FREQUENCY
     days = (df["date"].max() - df["date"].min()).days + 1
     txn_frequency = len(df) / days if days else 0
 

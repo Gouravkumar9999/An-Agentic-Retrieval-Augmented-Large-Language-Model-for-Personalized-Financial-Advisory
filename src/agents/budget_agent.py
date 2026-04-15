@@ -1,39 +1,48 @@
 from src.agents.llm import generate_response
 
 def budget_agent(user_data, context, metrics):
-    """
-    Generates budgeting advice based on user metrics, spending behavior,
-    and retrieved financial knowledge.
-    """
     prompt = f"""
 You are a financial budgeting expert.
 
 STRICT RULES:
-- NEVER recompute values.
-- USE ONLY the provided metrics and extra features.
-- DO NOT hallucinate or invent numbers.
-- Always refer to the provided CONTEXT if relevant.
+- USE ONLY given METRICS and FEATURES
+- DO NOT recompute values
+- DO NOT hallucinate
+- PRIORITY: METRICS > FEATURES > CONTEXT
+- DO NOT explain reasoning
 
 METRICS:
-{metrics}
+income = {metrics['income']}
+expenses = {metrics['expenses']}
+savings = {metrics['savings']}
+expense_ratio = {metrics['expense_ratio']}
+savings_ratio = {metrics['savings_ratio']}
 
-EXTRA FEATURES:
+FEATURES:
 discretionary_ratio = {user_data.get("discretionary_ratio", 0)}
-top3_ratio = {user_data.get("top3_ratio", 0)}
 essential_ratio = {user_data.get("essential_ratio", 0)}
+top3_ratio = {user_data.get("top3_ratio", 0)}
 
 CONTEXT:
 {context}
 
-TASK:
-1. Evaluate spending behavior.
-2. Identify overspending or optimization opportunities.
-3. Suggest concise actionable steps.
+LOGIC:
+- discretionary_ratio > 0.5 → overspending
+- expense_ratio > 0.7 → high expense risk
+- savings_ratio < 0.2 → poor savings
 
-OUTPUT:
-- Bullet points only
-- Max 80 words
-- Highlight overspending if discretionary_ratio > 0.5
-- Otherwise suggest optimization
+TASK:
+1. Identify spending behavior
+2. Identify ONE key issue
+3. Suggest 2–3 actions
+
+OUTPUT FORMAT (STRICT):
+- Spending: <short insight>
+- Issue: <main problem>
+- Action 1: <step>
+- Action 2: <step>
+- Action 3: <optional step>
+
+DO NOT add anything else.
 """
     return generate_response(prompt)
